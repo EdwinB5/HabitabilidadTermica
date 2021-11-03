@@ -34,6 +34,13 @@ class Edificio:
 		dado que utiliza la estación de año
 		'''
 		self.humedad = 0
+
+	@staticmethod
+	def calcular_dimension_habitacion():
+		'''
+		Esta función calcula las dimensiones de las habitaciones
+		a partir del tamaño del edificio
+		'''
 	
 	@staticmethod
 	def calcular_temperatura_habitacion():
