@@ -1,17 +1,22 @@
-from flask import Flask, jsonify
-app = Flask(__name__)
+from flask import Flask, render_template
+
+app = Flask(__name__, template_folder='view', static_folder='view/static/')
 
 @app.route('/')
-def home():
+def datos_entrada():
 	'''
-	Vista básica del proyecto
-
-	:returns: regresa un json básico
-	:rtype: json
+	Vista principal del proyecto, formulario de entrada
 	'''
-	home = {'titulo':'home', 'numero': 2, 'activo': True}
+	return render_template('index.html')
 
-	return jsonify(home)
+@app.route('/salida')
+def datos_salida():
+	'''
+	Vista salida del proyecto, plantilla salida
+	'''
+	return render_template('resultado.html')
+
+# Web services
 
 def run(host, port):
 	'''
