@@ -1,7 +1,6 @@
 body{
     font-family:Arial;
     background-color:steelblue;
-    overflow: hidden;
 }
     
 .panel{
@@ -63,7 +62,7 @@ input[type="submit"]{
 	display: block;
 	border: none;
 	margin: 20px auto;
-	width: 280px;
+	width: 90%;
 	background-color: mediumseagreen;
 	padding: 15px 0;
 	text-align: center;
@@ -74,7 +73,7 @@ input[type="reset"]{
 	display: block;
 	border: none;
 	margin: 20px auto;
-	width: 280px;
+	width: 90%;
 	background-color: steelblue;
 	padding: 15px 0;
 	text-align: center;
@@ -95,7 +94,7 @@ input{
 	display: block;
 	border: none;
 	margin: 20px auto;
-	width: 280px;
+	width: 90%;
 	background-color: #eaeaea;
 	padding: 15px 0;
 	text-align: center;
