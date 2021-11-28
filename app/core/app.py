@@ -18,8 +18,8 @@ def obtener_datos():
 	para empezar la evaluacion de habitabilidad
 	'''
 	if request.method == 'POST':
+		obtener_entrada()
 		
-
 @app.route('/salida', methods=['GET', 'POST'])
 def datos_salida():
 	'''
