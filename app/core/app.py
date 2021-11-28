@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
-from .controller import controller
+from .controller.controller import Controller
 
 app = Flask(__name__, template_folder='view', static_folder='view/static/')
 
+# ------------------------> Web services <------------------------
 @app.route('/', methods=['GET', 'POST'])
 def datos_entrada():
 	'''
@@ -17,12 +18,7 @@ def obtener_datos():
 	para empezar la evaluacion de habitabilidad
 	'''
 	if request.method == 'POST':
-		estacion = request.form.get('estacion')
-		humedad = request.form.get('humedad')
-		temperatura_ambiente = request.form.get('temperatura')
-		tamaño_edificacion = request.form.get('tamaño')
-		coeficiente = request.form.get('coeficiente')
-		controller.datos_controller(estacion, humedad, temperatura_ambiente, tamaño_edificacion, coeficiente)
+		
 
 @app.route('/salida', methods=['GET', 'POST'])
 def datos_salida():
@@ -32,7 +28,14 @@ def datos_salida():
 
 	return render_template('resultado.html')
 
-# Web services
+# ------------------------> Funciones <------------------------
+def obtener_entrada():
+	estacion = request.form.get('estacion')
+	humedad = request.form.get('humedad')
+	temperatura_ambiente = request.form.get('temperatura')
+	tamaño_edificacion = request.form.get('tamaño')
+	coeficiente = request.form.get('coeficiente')
+	Controller.datos_controller(estacion, humedad, temperatura_ambiente, tamaño_edificacion, coeficiente)
 
 def run(host, port):
 	'''

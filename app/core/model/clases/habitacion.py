@@ -6,7 +6,7 @@ class Habitacion(Edificio):
 	contiene todas las funciones necesarias para medir
 	el fenomeno dentro de la habitación y como se propaga
 	'''
-	def __init__(self, temperatura:int = 0, dimensiones:tuple = (0, 0), coeficiente_transferencia:int = 0, resistencia:int = 0):
+	def __init__(self, temperatura:int = 0, dimensiones:tuple = (0, 0), coeficiente_transferencia:int = 0, resistencia:int = 0, temperatura_inicial:int = 0):
 		'''
 		Este es el constructor de la clase habitacion
 		
@@ -23,6 +23,7 @@ class Habitacion(Edificio):
 		self.dimensiones = dimensiones
 		self.coeficiente_transferencia = coeficiente_transferencia
 		self.resistencia = resistencia
+		self.temperatura_inicial = temperatura_inicial
 
 	def __str__(self):
 		'''
