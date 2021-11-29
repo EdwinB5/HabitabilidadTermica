@@ -1,4 +1,4 @@
-from edificio import Edificio
+from .edificio import Edificio
 
 class Habitacion(Edificio):
 	'''
@@ -6,7 +6,7 @@ class Habitacion(Edificio):
 	contiene todas las funciones necesarias para medir
 	el fenomeno dentro de la habitación y como se propaga
 	'''
-	def __init__(self, temperatura:int = 0, dimensiones:tuple = (0, 0), coeficiente_transferencia:int = 0, resistencia:int = 0, temperatura_inicial:int = 0):
+	def __init__(self, num_habitacion:int = 0, temperatura:int = 0, dimensiones:tuple = (5, 5), coeficiente_transferencia:int = 0, resistencia:int = 0, temperatura_inicial:int = 0, estado:bool = False):
 		'''
 		Este es el constructor de la clase habitacion
 		
@@ -18,15 +18,21 @@ class Habitacion(Edificio):
 		:type coeficiente_transferencia: int
 		:param resistencia: la resistencia en los muros
 		:type resistencia: int
+		:param temperatura_inicial: la temperatura en la habitacion
+		:type temperatura_inicial: int
+		:param estado: si la habitacion esta en uso:
+		:type estado: bool
 		'''
+		self.numero_habitacion = num_habitacion
 		self.temperatura = temperatura
 		self.dimensiones = dimensiones
 		self.coeficiente_transferencia = coeficiente_transferencia
 		self.resistencia = resistencia
 		self.temperatura_inicial = temperatura_inicial
+		self.estado = estado
 
 	def __str__(self):
 		'''
 		Esta función permite leer a manera de cadena la habitacion
 		'''
-		return f'Habitacion: [(temperatura: {self.temperatura}), (dimensiones: {self.dimensiones}), (coeficiente: {self.coeficiente_transferencia}), (resistencia: {self.resistencia})]'
+		return f'Habitacion: [(Número habitación:{self.numero_habitacion}), (Temperatura: {self.temperatura}), (Dimensiones: {self.dimensiones}), (Coeficiente: {self.coeficiente_transferencia}), (Resistencia: {self.resistencia})]'

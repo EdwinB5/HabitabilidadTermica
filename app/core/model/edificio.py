@@ -4,7 +4,7 @@ class Edificio:
 	respectivos valores iniciales, también contiene
 	las funciones para la propagación del fenomeno
 	'''
-	def __init__(self, temperatura:int = 0, estacion:str = 'Ninguna', tamaño:int = 0, humedad:int = 0):
+	def __init__(self, temperatura:int = 0, estacion:str = 'Ninguna', tamaño:int = 0, humedad:int = 0, pisos:int = 0):
 		'''
 		Constructor de la clase Edificio
 
@@ -20,13 +20,15 @@ class Edificio:
 		self.temperatura = temperatura
 		self.estacion = estacion
 		self.tamaño = tamaño
+		self.dimensiones = (0, 0)
 		self.humedad = humedad
+		self.pisos = pisos
 
 	def __str__(self):
 		'''
 		Esta función permite leer la clase a manera de cadena
 		'''
-		return f'Edificio: [(Temperatura: {self.temperatura}), (Estación: {self.estacion}), (Tamaño: {self.tamaño})]'
+		return f'Edificio: [(Temperatura: {self.temperatura}), (Estación: {self.estacion}), (Tamaño: {self.tamaño}), (Dimensiones: {self.dimensiones}), (Humedad: {self.humedad}), (Pisos: {self.pisos})]'
 
 	def calcular_humedad_edificio(self):
 		'''
@@ -34,13 +36,6 @@ class Edificio:
 		dado que utiliza la estación de año
 		'''
 		self.humedad = 0
-
-	@staticmethod
-	def calcular_dimension_habitacion():
-		'''
-		Esta función calcula las dimensiones de las habitaciones
-		a partir del tamaño del edificio
-		'''
 	
 	@staticmethod
 	def calcular_temperatura_habitacion():
