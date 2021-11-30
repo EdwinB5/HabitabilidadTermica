@@ -2,7 +2,8 @@ from flask import Flask, render_template, request
 from .controller.controller import Controller
 
 app = Flask(__name__, template_folder='view', static_folder='view/static/')
-controller_app = Controller() 
+controller_app = Controller()
+ 
 # ------------------------> Web services <------------------------
 @app.route('/', methods=['GET', 'POST'])
 def datos_entrada():
@@ -29,13 +30,18 @@ def datos_salida():
 	return render_template('resultado.html')
 
 # ------------------------> Funciones <------------------------
+
 def obtener_entrada():
+	'''
+	Esta función obtiene los datos introducidos por el usuario
+	en la vista
+	'''
 	estacion = request.form.get('estacion')
 	humedad = request.form.get('humedad')
 	temperatura_ambiente = request.form.get('temperatura')
 	tamaño_edificacion = request.form.get('tamaño')
 	coeficiente = request.form.get('coeficiente')
-	controller_app.datos_controller(estacion, humedad, temperatura_ambiente, tamaño_edificacion, coeficiente)
+	controller_app.main_controller(estacion, humedad, temperatura_ambiente, tamaño_edificacion, coeficiente)
 
 def run(host, port):
 	'''
