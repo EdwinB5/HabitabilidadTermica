@@ -124,7 +124,7 @@ class Controller:
 		habitacion_alta = []
 		habitacion_media = []
 		habitacion_baja = []
-		print(self.habitaciones_edificio)
+		#print(self.habitaciones_edificio)
 		for piso in self.habitaciones_edificio:
 			for habitacion in piso:
 				if float(habitacion.temperatura) >= 12 and float(habitacion.temperatura) <= 27:
@@ -161,7 +161,7 @@ class Controller:
 		0 - 44 BAJA
 		'''
 		confort = 0
-		color = 'success'
+		color = 'primary'
 
 		if self.edificio.habitabilidad_edificio == 'Alta':
 			confort = randrange(75, 100)
