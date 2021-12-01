@@ -36,6 +36,8 @@ class Controller:
 		self.habitacion_cantidad_alta = 0
 		self.habitacion_cantidad_media = 0
 		self.habitacion_cantidad_baja = 0
+		self.habitaciones_disponibles = 0
+		self.habitaciones_totales = 0
 
 
 	def imprimir_habitaciones_edificio(self):
@@ -53,6 +55,8 @@ class Controller:
 		Este metodo elimina las habitaciones del edificio que se encuentran sin uso
 		'''
 		lista_aux = []
+		habitacion_disponible = []
+		habitacion_total = []
 		num = 0
 		for piso in self.habitaciones_edificio:
 			if piso:
@@ -60,9 +64,14 @@ class Controller:
 			for habitacion in piso:
 				if not habitacion.estado == False:
 					lista_aux[num].append(habitacion)
+					habitacion_disponible.append(habitacion)
+
+				habitacion_total.append(habitacion)
 			num += 1
 		
 		self.habitaciones_edificio = lista_aux
+		self.habitaciones_disponibles = len(habitacion_disponible)
+		self.habitaciones_totales = len(habitacion_total)
 	
 	def propagar_temperatura(self):
 		'''
@@ -112,10 +121,10 @@ class Controller:
 		
   
 		'''
-		habitacion_alta = ['']
-		habitacion_media = ['']
-		habitacion_baja = ['']
-
+		habitacion_alta = []
+		habitacion_media = []
+		habitacion_baja = []
+		print(self.habitaciones_edificio)
 		for piso in self.habitaciones_edificio:
 			for habitacion in piso:
 				if float(habitacion.temperatura) >= 12 and float(habitacion.temperatura) <= 27:
@@ -170,7 +179,7 @@ class Controller:
 		'''
 		Este metodo calcula el area del edificio
 		'''
-		return self.edificio.tamaño * self.edificio.tamaño
+		return int(self.edificio.tamaño) * int(self.edificio.tamaño)
 
 	def recuperar_datos_salida(self):
 		'''
@@ -181,11 +190,16 @@ class Controller:
 			area = self.calcular_area_edificio()
 		except:
 			area = 0
+
 		temperatura_promedio = 0
 
 		nivel, color = self.calcular_nivel_confort()
-		habitaciones_habitables = 0
-		habitaciones_no_habitables = 0
+		try:
+			habitaciones_habitables = self.habitaciones_disponibles
+			habitaciones_no_habitables = self.habitaciones_totales
+		except:
+			habitaciones_habitables = 0
+			habitaciones_no_habitables = 0
 		try:
 			habitacion_alta = self.habitacion_cantidad_alta
 			habitacion_media = self.habitacion_cantidad_media
@@ -196,8 +210,13 @@ class Controller:
 			habitacion_baja = 0
 
 		pisos = len(self.edificio_completo)
-		#humedad_edificio = float(self.edificio.humedad)
-		humedad_edificio = 0
+		try:
+			humedad_edificio = self.edificio.humedad
+			humedad_edificio = re.sub('%', '', humedad_edificio)
+			humedad_edificio = float(humedad_edificio)
+			humedad_edificio = round(humedad_edificio, 3)
+		except:
+			humedad_edificio = 0
 		datos_salida = {
 			'habitabilidad': self.edificio.habitabilidad_edificio,
 			'area_total': area,
