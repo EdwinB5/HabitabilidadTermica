@@ -26,8 +26,8 @@ def datos_salida():
 	'''
 	Vista salida del proyecto, plantilla salida
 	'''
-
-	return render_template('resultado.html')
+	datos_edificio = controller_app.recuperar_datos_salida()  
+	return render_template('resultado.html', data=datos_edificio)
 
 # ------------------------> Funciones <------------------------
 
